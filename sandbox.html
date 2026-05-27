@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Total Recall — AI Sandbox</title></head>
+<body>
+  <!--
+    SANDBOX PAGE
+    ============
+    Chrome MV3 doesn't allow extension pages to load scripts from the internet.
+    But "sandbox" pages CAN — they run in an isolated environment with relaxed
+    security rules.
+
+    This page loads transformers.js from CDN and runs the AI model.
+    It communicates with offscreen.js via window.postMessage (since
+    sandbox pages can't use chrome.runtime APIs).
+
+    Flow:
+      background.js → chrome.runtime.sendMessage → offscreen.js
+        → window.postMessage → sandbox.html (THIS PAGE, runs AI model)
+        → window.postMessage → offscreen.js
+        → chrome.runtime.sendMessage → background.js
+  -->
+  <script src="sandbox.js"></script>
+</body>
+</html>

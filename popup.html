@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Total Recall</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- === HEADER === -->
+  <div class="header">
+    <h1>
+      <span class="logo">🧠</span>
+      Total Recall
+    </h1>
+    <div class="stats-row">
+      <span>Events: <strong id="stat-count">—</strong></span>
+      <span>Latest: <strong id="stat-last">—</strong></span>
+      <button class="chat-btn" id="open-chat" title="Open AI Chat">💬 Chat</button>
+    </div>
+  </div>
+
+  <!-- === VIEW TOGGLE === -->
+  <div class="view-toggle">
+    <button class="view-btn active" data-view="search">🔍 Search</button>
+    <button class="view-btn" data-view="topics">🗂️ Topics</button>
+  </div>
+
+  <!-- === SEARCH === -->
+  <div class="search-wrap" id="search-view">
+    <div class="search-bar">
+      <input id="q" type="text" placeholder="Search your browser memory..." autofocus />
+      <button id="go">Search</button>
+    </div>
+  </div>
+
+  <!-- === LOADING === -->
+  <div class="status" id="status">
+    <div class="dot-pulse"><span></span><span></span><span></span></div>
+    <span id="status-msg">Searching...</span>
+  </div>
+
+  <!-- === FILTER TABS === -->
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-type="all">All</button>
+    <button class="filter-btn" data-type="pageview">Pages</button>
+    <button class="filter-btn" data-type="click">Clicks</button>
+    <button class="filter-btn" data-type="selection">Selections</button>
+    <button class="filter-btn" data-type="search">Searches</button>
+    <button class="filter-btn" data-type="input">Inputs</button>
+    <button class="filter-btn" data-type="sheets">Sheets</button>
+  </div>
+
+  <!-- === RESULTS === -->
+  <div class="results" id="results">
+    <div class="empty" id="empty">
+      <div class="big-icon">🔍</div>
+      <h3>Search your browsing memory</h3>
+      <p>
+        Try queries like:<br />
+        <code>spreadsheet comparing prices</code><br />
+        <code>article about machine learning</code><br />
+        <code>that form I filled out</code>
+      </p>
+    </div>
+  </div>
+
+  <!-- === TOPICS VIEW === -->
+  <div class="topics-view" id="topics-view" style="display:none;">
+    <div class="topics-loading" id="topics-loading" style="display:none;">
+      <div class="dot-pulse"><span></span><span></span><span></span></div>
+      <span>Clustering your browsing history...</span>
+    </div>
+    <div class="topics-empty" id="topics-empty" style="display:none;">
+      <div class="big-icon">🗂️</div>
+      <h3>No topics yet</h3>
+      <p>Browse some pages first so the AI can group them into topics.</p>
+    </div>
+    <div class="topics-list" id="topics-list"></div>
+  </div>
+
+  <!-- === FOOTER === -->
+  <div class="footer">
+    <span class="footer-method" id="method"></span>
+    <button class="footer-clear" id="clear">Clear All Data</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

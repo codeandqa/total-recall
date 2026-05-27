@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Total Recall — AI Bridge</title></head>
+<body>
+  <!--
+    OFFSCREEN DOCUMENT — Message bridge
+    ====================================
+    This hidden page sits between background.js and sandbox.html:
+
+      background.js ←(chrome messages)→ offscreen.js ←(postMessage)→ sandbox.html
+
+    The sandbox page runs the AI model but can't use chrome.* APIs.
+    The background service worker can use chrome.* APIs but can't load CDN scripts.
+    This page bridges the two worlds.
+
+    The iframe below loads sandbox.html, which has relaxed security rules
+    and can load transformers.js from the CDN.
+  -->
+  <iframe id="sandbox" src="sandbox.html" style="display:none;"></iframe>
+  <script src="offscreen.js"></script>
+</body>
+</html>

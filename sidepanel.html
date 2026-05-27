@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Total Recall — Chat</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+
+  <!-- === HEADER === -->
+  <div class="sp-header">
+    <div class="sp-header-left">
+      <span class="sp-logo">🧠</span>
+      <h1>Total Recall</h1>
+    </div>
+    <button class="sp-settings-btn" id="settings-toggle" title="API settings">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- === SETTINGS PANEL (hidden by default) === -->
+  <div class="sp-settings" id="settings-panel" style="display: none;">
+    <div class="sp-settings-inner">
+      <h3>API settings</h3>
+      <p class="sp-settings-desc">Enter an API key to enable AI-powered chat. Your key is stored locally and sent directly to the provider — never to our servers.</p>
+
+      <label class="sp-label">Provider</label>
+      <select id="api-provider">
+        <option value="anthropic">Anthropic (Claude)</option>
+        <option value="openai">OpenAI (GPT)</option>
+      </select>
+
+      <label class="sp-label">API key</label>
+      <input type="password" id="api-key" placeholder="sk-..." />
+
+      <label class="sp-label">Model</label>
+      <input type="text" id="api-model" placeholder="Auto-detected" />
+
+      <div class="sp-settings-actions">
+        <button id="save-settings" class="sp-btn-primary">Save</button>
+        <button id="close-settings" class="sp-btn-secondary">Cancel</button>
+      </div>
+      <div class="sp-settings-status" id="settings-status"></div>
+    </div>
+  </div>
+
+  <!-- === CHAT MESSAGES === -->
+  <div class="sp-messages" id="messages">
+    <!-- Welcome message -->
+    <div class="sp-msg sp-msg-ai">
+      <div class="sp-msg-avatar">🧠</div>
+      <div class="sp-msg-body">
+        <div class="sp-msg-text">
+          Hi! I'm your browsing memory assistant. Ask me anything about what you've done in Chrome — pages you visited, things you searched, text you selected, spreadsheets you edited.
+          <br/><br/>
+          <strong>Try asking:</strong>
+          <ul>
+            <li>"What articles did I read today?"</li>
+            <li>"Summarize the pages I visited about React"</li>
+            <li>"What was the name of that restaurant I looked up?"</li>
+            <li>"What spreadsheets did I work on this week?"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === INPUT BAR === -->
+  <div class="sp-input-wrap">
+    <div class="sp-input-bar">
+      <textarea id="chat-input" placeholder="Ask about your browsing history..." rows="1"></textarea>
+      <button id="send-btn" title="Send">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sp-input-hint" id="input-hint">
+      <span id="key-status">No API key set — click the gear icon above</span>
+    </div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
